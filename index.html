@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right Together | Article 20</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.96);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            color: white;
+            font-size: 23px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #53b3cb;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #53b3cb;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(
+                rgba(7, 24, 45, 0.85),
+                rgba(7, 24, 45, 0.9)
+            ),
+            url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 120px 8%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 85px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #53b3cb;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 650px;
+            margin-bottom: 35px;
+            color: #e2e8f0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #53b3cb;
+            color: #07182d;
+            padding: 14px 27px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: #0a2744;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: 0.3s;
+            border-top: 4px solid #53b3cb;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .card .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #0a2744;
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #64748b;
+        }
+
+        /* ARTICLE 20 */
+        .article {
+            background: #0a2744;
+            color: white;
+        }
+
+        .article-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .article h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        .article-quote {
+            background: rgba(255,255,255,0.08);
+            border-left: 5px solid #53b3cb;
+            padding: 30px;
+            margin: 35px 0;
+            font-size: 22px;
+            text-align: left;
+            border-radius: 8px;
+        }
+
+        .article-content p {
+            color: #dbe5ef;
+        }
+
+        /* REAL LIFE */
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .example {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 7px 20px rgba(0,0,0,0.06);
+        }
+
+        .example h3 {
+            color: #0a2744;
+            margin: 10px 0;
+        }
+
+        /* QUESTION */
+        .question {
+            background: #e7f5f8;
+            text-align: center;
+        }
+
+        .question h2 {
+            font-size: 38px;
+            color: #0a2744;
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 20px;
+            color: #405267;
+        }
+
+        /* TAKE ACTION */
+        .action {
+            background: linear-gradient(135deg, #0a2744, #123f63);
+            color: white;
+            text-align: center;
+        }
+
+        .action h2 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .action p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #dbe5ef;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .step {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #061525;
+            color: #9fb0c2;
+            text-align: center;
+            padding: 35px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+        @media (max-width: 850px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .hero {
+                text-align: center;
+                justify-content: center;
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">RIGHT <span>TOGETHER</span></div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#human-rights">Human Rights</a></li>
+        <li><a href="#why">Why Rights?</a></li>
+        <li><a href="#article20">Article 20</a></li>
+        <li><a href="#importance">Importance</a></li>
+        <li><a href="#real-life">Real Life</a></li>
+        <li><a href="#restrictions">Restrictions</a></li>
+        <li><a href="#action">Take Action</a></li>
+    </ul>
+</nav>
+
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Your Rights.<br><span>Your Voice.</span></h1>
+
+        <p>
+            Discover Article 20 of the Universal Declaration of Human Rights
+            and learn why the freedom to peacefully gather and associate matters.
+        </p>
+
+        <a href="#human-rights" class="button">
+            Explore Human Rights →
+        </a>
+    </div>
+</section>
+
+
+<!-- HUMAN RIGHTS -->
+<section id="human-rights">
+    <div class="section-title">
+        <h2>What Are Human Rights?</h2>
+        <p>
+            Basic freedoms and protections that belong to every person,
+            regardless of who they are.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🌍</div>
+            <h3>Universal</h3>
+            <p>
+                Human rights belong to everyone, everywhere.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚖️</div>
+            <h3>Equal</h3>
+            <p>
+                Every person deserves to be treated with dignity and fairness.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🕊️</div>
+            <h3>Freedom</h3>
+            <p>
+                Rights protect important freedoms that allow people to live
+                with dignity.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🛡️</div>
+            <h3>Protection</h3>
+            <p>
+                Human rights help protect people from unfair treatment and abuse.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- WHY RIGHTS -->
+<section id="why">
+    <div class="section-title">
+        <h2>Why Must Humans Have Rights?</h2>
+        <p>
+            Rights allow people to participate in society, express themselves
+            and live with dignity.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🗣️</div>
+            <h3>Our Voices</h3>
+            <p>
+                People should be able to express ideas and opinions peacefully.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🤝</div>
+            <h3>Our Communities</h3>
+            <p>
+                People can work together to support their communities.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌱</div>
+            <h3>Our Future</h3>
+            <p>
+                Rights help create societies where people can contribute
+                and create positive change.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ARTICLE 20 -->
+<section class="article" id="article20">
+    <div class="article-content">
+
+        <h2>Article 20</h2>
+
+        <div class="article-quote">
+            <strong>Freedom of Peaceful Assembly and Association</strong>
+            <br><br>
+
+            Everyone has the right to freedom of peaceful assembly
+            and association.
+            <br><br>
+
+            No one may be compelled to belong to an association.
+        </div>
+
+        <p>
+            In simple words, people have the freedom to peacefully gather,
+            create groups, join organisations and choose whether they want
+            to belong to them.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- IMPORTANCE -->
+<section id="importance">
+    <div class="section-title">
+        <h2>Why Does Article 20 Matter?</h2>
+
+        <p>
+            Positive change often begins when people come together.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">📢</div>
+            <h3>Share Ideas</h3>
+            <p>
+                People can exchange ideas and discuss issues that matter to them.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🤝</div>
+            <h3>Build Communities</h3>
+            <p>
+                Groups allow people with shared interests and goals to support
+                one another.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">✊</div>
+            <h3>Create Change</h3>
+            <p>
+                Peaceful collective action can help communities raise awareness
+                and encourage positive change.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- REAL LIFE -->
+<section id="real-life">
+    <div class="section-title">
+        <h2>Article 20 in Real Life</h2>
+        <p>
+            This right can appear in many ordinary parts of our lives.
+        </p>
+    </div>
+
+    <div class="examples">
+
+        <div class="example">
+            <div class="icon">🏫</div>
+            <h3>At School</h3>
+            <p>
+                Students creating clubs and organisations around shared interests.
+            </p>
+        </div>
+
+        <div class="example">
+            <div class="icon">🏘️</div>
+            <h3>In Communities</h3>
+            <p>
+                Neighbours working together to solve local problems.
+            </p>
+        </div>
+
+        <div class="example">
+            <div class="icon">📣</div>
+            <h3>Peaceful Demonstrations</h3>
+            <p>
+                People peacefully gathering to raise awareness about an issue.
+            </p>
+        </div>
+
+        <div class="example">
+            <div class="icon">💻</div>
+            <h3>Online Communities</h3>
+            <p>
+                People connecting around shared interests and causes.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- RESTRICTIONS -->
+<section class="question" id="restrictions">
+
+    <h2>What If This Right Is Restricted?</h2>
+
+    <p>
+        When people cannot peacefully gather or form organisations,
+        they may lose important ways to express themselves and participate
+        in society.
+    </p>
+
+    <br>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Less Participation</h3>
+            <p>
+                People may have fewer opportunities to participate in their communities.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Less Expression</h3>
+            <p>
+                People may struggle to share ideas and concerns collectively.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Less Community</h3>
+            <p>
+                Groups and organisations can become harder to create or maintain.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BIG QUESTION -->
+<section class="article">
+
+    <div class="article-content">
+
+        <h2>Think About It.</h2>
+
+        <div class="article-quote">
+            Can a society truly be free if people are not free
+            to peacefully come together?
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TAKE ACTION -->
+<section class="action" id="action">
+
+    <h2>Know Your Rights.</h2>
+
+    <p>
+        Understanding human rights is only the beginning.
+        We can promote them by learning, listening, participating
+        peacefully and respecting the rights of others.
+    </p>
+
+    <div class="steps">
+
+        <div class="step">① Learn</div>
+        <div class="step">② Question</div>
+        <div class="step">③ Discuss</div>
+        <div class="step">④ Participate</div>
+        <div class="step">⑤ Respect</div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        <strong>RIGHT TOGETHER</strong>
+    </p>
+
+    <p>
+        An educational website about Article 20 of the Universal Declaration
+        of Human Rights.
+    </p>
+
+    <br>
+
+    <p>© 2026 Right Together | Human Rights Awareness Project</p>
+
+</footer>
+
+
+</body>
+</html>
